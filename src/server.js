@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000
 
 // Run the server!
 try {
-  await fastify.listen({ port })
+  await fastify.listen({ port, host: '::' })
 } catch (err) {
   fastify.log.error(err)
   process.exit(1)
