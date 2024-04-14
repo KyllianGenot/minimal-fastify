@@ -1,18 +1,20 @@
+import process from 'node:process'
 // Import the framework and instantiate it
 import cors from '@fastify/cors'
 import Fastify from 'fastify'
+
 const fastify = Fastify({
-  logger: true
+  logger: true,
 })
 
 fastify.register(cors)
 
 // Declare a route
-fastify.get('/', async function handler (request, reply) {
+fastify.get('/', async (/* request, reply */) => {
   return { hello: 'world' }
 })
 
-fastify.get('/version', async function handler (request, reply) {
+fastify.get('/version', async (_request, reply) => {
   return reply.send('1.0.0')
 })
 
