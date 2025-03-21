@@ -2,6 +2,7 @@ import process from 'node:process'
 // Import the framework and instantiate it
 import cors from '@fastify/cors'
 import Fastify from 'fastify'
+import connect from "./connect.js";
 
 const fastify = Fastify({
   logger: true,
@@ -23,6 +24,7 @@ const port = process.env.PORT || 4000
 
 // Run the server!
 try {
+  await connect();
   await fastify.listen({ port, host: '::' })
 } catch (err) {
   fastify.log.error(err)
